@@ -20,7 +20,13 @@ but in this case, I prefer installing sphinxsearch manually.
 If you choose to do it manually, I will assume that you are capable of following
 what will differ for you in the documentation.
 
-I chose to use this for compiling:
+Compiling
+~~~~~~~~~
+
+One big reason you would choose to compile yourself is if your distro doesn't
+provide xmlpipe2. I ended up needing to compile.
+
+If you compile yourself, you will want *--with-xmlpipe2*::
 
     ./configure --without-mysql --with-xmlpipe2
     make install
@@ -32,7 +38,7 @@ Configuring SphinxSearch
 
 Edit /etc/sphinx.conf
 
-You will want this file to look like this:
+You will want this file to look like this::
 
     source MYSITE {
         type = xmlpipe2
@@ -81,17 +87,18 @@ You will want this file to look like this:
         workers = threads
     }
 
-Save that and follow with:
+Save that and follow with::
 
+    indexer --all
     service searchd restart
 
 Updating the Index
 ------------------
 
-Any time you want to update the search index (after generating new content) run:
+Any time you want to update the search index (after generating new content) run::
 
     indexer --rotate --quiet MYSITE
 
-I personally prefer only updating once per day. In my root cron, I have:
+I personally prefer only updating once per day. In my root cron, I have::
 
     @daily /usr/local/bin/indexer --rotate --quiet MYSITE

@@ -29,12 +29,12 @@ Deploying the Application
 In this directory is a bottleapp directory. Copy the contents to
 */var/www/MYSITE-search*. Edit */var/www/MYSITE-search/settings.cfg*.
 
-The minimum you need in here is:
+The minimum you need in here is::
 
     [bottle]
     site_name=MYSITE
 
-Optional settings (defaults):
+Optional settings (defaults)::
 
     sphinx_server=127.0.0.1
     sphinx_port=9306
@@ -47,12 +47,14 @@ Before this, we had pelican generate a search_base.html file. This will be used
 by bottle to theme the output. We could use pelican directly, but it would be a
 lot of work and a lot of processing.
 
+Add this base template to pelican with::
+
     ln -s /var/www/MYSITE/output/search_base.html /var/www/MYSITE-search/views/base.html
 
 Running with uwsgi
 ------------------
 
-Edit /etc/uwsgi/apps-available/MYSITE-search.ini
+Edit /etc/uwsgi/apps-available/MYSITE-search.ini::
 
     [uwsgi]
     socket = /run/uwsgi/app/MYSITE-search/socket
@@ -63,7 +65,7 @@ Edit /etc/uwsgi/apps-available/MYSITE-search.ini
     uid = www-data
     gid = www-data
 
-Save that and follow with:
+Save that and follow with::
 
     service uwsgi restart
 

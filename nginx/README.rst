@@ -14,13 +14,13 @@ Nginx Configuration
 
 Edit /etc/nginx/sites-available/<yoursite>
 
-To your *server* block, add this:
+To your *server* block, add this::
 
     location ^~ /search {
         include uwsgi_params;
         unix:/run/uwsgi/app/mlustfield-search/socket;
     }
 
-Save that and follow with:
+Save that and follow with::
 
     service nginx restart

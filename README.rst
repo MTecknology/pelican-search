@@ -55,7 +55,7 @@ Getting Started
 ---------------
 
 This project is divided into four directories. Each directory relates to one
-piece of the puzzle.
+piece of the puzzle. It's best to follow them in order.
 
 * *pelican*: Get pelican generating what we need
 * *sphinxsearch*: Get sphinxsearch reading the data pelican created
