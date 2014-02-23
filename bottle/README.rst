@@ -17,11 +17,16 @@ Dependencies
 
 This python application requires:
 
-* sqlalchemy
-* sphinxalchemy
+* python-mysqldb
+* python-sqlalchemy
 * bottle
 * uwsgi
 * uwsgi-plugin-python
+
+You will also want to::
+
+    pip install bottle-sqlalchemy
+    pip install bottle-sphinxalchemy
 
 Deploying the Application
 -------------------------
@@ -70,5 +75,5 @@ Save that and follow with::
     service uwsgi restart
 
 
-You know have a socket at /run/uwsgi/app/MYSITE-search/socket that Nginx is able
+You now have a socket at /run/uwsgi/app/MYSITE-search/socket that Nginx is able
 to communicate through to talk to your bottle application.

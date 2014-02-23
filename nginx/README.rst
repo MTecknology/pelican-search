@@ -18,7 +18,7 @@ To your *server* block, add this::
 
     location ^~ /search {
         include uwsgi_params;
-        unix:/run/uwsgi/app/mlustfield-search/socket;
+        uwsgi_pass unix:/run/uwsgi/app/MYSITE-search/socket;
     }
 
 Save that and follow with::
