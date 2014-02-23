@@ -30,6 +30,10 @@ option for websites. My goal was to build something that would run without
 issues on a server with as little as 128MB RAM. It's possible that this will run
 well on less but I haven't testet it.
 
+A little warning, we are creating an external search service and hosting it
+ourselves. This is usually an incredibly complicated task. This project is half
+documentation and half code.
+
 Getting Prepared
 ----------------
 
