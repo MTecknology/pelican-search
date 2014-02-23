@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="small-title">Search Results</h1>
+  {% for row in rows %}
+  <article class="post">
+    <header class="post-header">
+        <h2><a title="{{ row['title'] }}" href="{{ row['url'] }}">{{ row['title'] }}</a></h2>
+      <div class="meta"></div>
+    </header>
+    <div class="post-content">
+      {{ row['summary'] }}
+    </div>
+    <footer class="post-footer">
+      <a class="readmore" href="{{ row['url'] }}">Read more...</a>
+    </footer>
+  </article>
+  <hr />
+  {% endfor %}
+{% endblock %}
