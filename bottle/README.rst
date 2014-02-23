@@ -40,6 +40,15 @@ Optional settings (defaults):
     sphinx_port=9306
     sphinx_life=1800
 
+The Template
+------------
+
+Before this, we had pelican generate a search_base.html file. This will be used
+by bottle to theme the output. We could use pelican directly, but it would be a
+lot of work and a lot of processing.
+
+    ln -s /var/www/MYSITE/output/search_base.html /var/www/MYSITE-search/views/base.html
+
 Running with uwsgi
 ------------------
 

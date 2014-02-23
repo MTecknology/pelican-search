@@ -62,6 +62,45 @@ piece of the puzzle.
 * *bottle*: Get the search application running
 * *nginx*: Make search requests go to the search application
 
+What Happens
+------------
+
+The end result is basically this:
+
+* Pelican has extra pieces added to the theme
+* Pelican creates a template for the Bottle application
+* Pelican creates a dump of the entire site for SphinxSearch to index
+* SphinxSearch indexes the site dump Pelican created
+* SphinxSearch listens to a port for mysql connections
+* Bottle is run by uwsgi
+* Bottle takes search arguments in the query string with ?q=
+* Bottle makes a connection to the mysql port SphinxSearch opened
+* Bottle performs the search
+* Bottle returns the search results, themed via the template file Pelican created
+* Uwsgi runs the Bottle application
+* Uwsgi creates a socket for Nginx to connect to
+* Nginx passes /search requests to uwsgi
+* User makes a request to Nginx
+
+So:
+
+* User <-> Nginx <-> Uwsgi <-> Bottle <-> SphinxSearch
+* Pelican -> <static file> <->SphinxSearch
+* Pelican -> <static file> <-> Bottle
+
+Adaptations
+-----------
+
+It would be perfectly viable to have pelican generate the XML file and run all
+other dynamic pieces on a different server. You could even have the search box
+generated send search requestst to search.yourdomain.tld. This would allow you
+to host your Pelican site on a static service such as pages.github.com and run
+the search on a cheap VPS.
+
+I'd offer a service to run something like this, but that means you're no longer
+in control and that obviously defeats a large purpose of this project.
+
+
 To Do
 -----
 
