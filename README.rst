@@ -84,6 +84,7 @@ The end result is basically this:
 
 So:
 
+* User <-> Nginx <-> Pelican (static files)
 * User <-> Nginx <-> Uwsgi <-> Bottle <-> SphinxSearch
 * Pelican -> <static file> <->SphinxSearch
 * Pelican -> <static file> <-> Bottle
