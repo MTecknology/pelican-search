@@ -109,7 +109,11 @@ I'm still not really happy with this project. However, there's only so much any
 one person can do. If you're interested, please see if you can help me with any
 of the following.
 
-* pelicanconf.py needs to be told to generate the search template, I don't like this.
+* pelicanconf.py needs to be told to generate the search template, I don't like
+  this.
+* On first request, it's possible sphinxsearch dropped the connection, I need to
+  figure out how to re-establish that connection without just letting the first
+  request die.
 
 .. _`pelican`: http://getpelican.com/
 .. _`sphinxsearch`: http://sphinxsearch.com/

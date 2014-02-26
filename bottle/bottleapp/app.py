@@ -11,15 +11,16 @@ from sqlalchemy import create_engine, Column, Integer, Sequence, String, MetaDat
 from sqlalchemy.ext.declarative import declarative_base
 from sphinxalchemy.schema import Index, Attribute, ArrayAttribute
 
+
+app = application = bottle.Bottle()
+
+
 conf = ConfigParser.SafeConfigParser({
     'sphinx_server': '127.0.0.1',
     'sphinx_port': '9306',
-    'sphinx_life': '1800',
+    'sphinx_life': '900',
     'site_name': None})
 conf.read('settings.cfg')
-
-
-app = application = bottle.Bottle()
 
 engine = create_engine(
     'sphinx+mysqldb://{}:{}'.format(
@@ -57,8 +58,12 @@ def run_search(db):
     if not search_terms:
         return bottle.jinja2_template('noresults.html')
 
-    rows = db.execute(documents.select().match(search_terms.strip()))
-    if rows:
+    try:
+        rows = db.execute(documents.select().match(search_terms.strip()))
+    except:
+        return 'Database error: please try your request again.'
+
+    if rows.rowcount > 0:
         return bottle.jinja2_template('results.html', rows=rows)
     else:
         return bottle.jinja2_template('noresults.html')
