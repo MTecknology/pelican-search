@@ -54,8 +54,8 @@ behind Nginx. At this point, you're now ready to start adding search magic!
 Getting Started
 ---------------
 
-This project is divided into four directories. Each directory relates to one
-piece of the puzzle. It's best to follow them in order.
+This project is divided into four sub-projects. Each directory relates to one
+piece of the puzzle (documented sub-project). It's best to follow them in order.
 
 * *pelican*: Get pelican generating what we need
 * *sphinxsearch*: Get sphinxsearch reading the data pelican created
